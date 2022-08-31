@@ -10,6 +10,8 @@ import java.util.stream.IntStream;
  */
 public class ArrayTasks {
 
+
+
     /**
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
@@ -29,9 +31,11 @@ public class ArrayTasks {
      * length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-        Random rand = new Random();
-        IntStream randomNumbers = rand.ints(length);
-        return randomNumbers.toArray();
+        int[] arr = new int[length];
+        for (int i = 0; i<arr.length; i++){
+            arr[i] = i+1;
+        }
+        return arr;
     }
 
     /**
@@ -76,7 +80,7 @@ public class ArrayTasks {
      */
     public String[] reverseArray(String[] arr) {
         List<String> strlist = Arrays.asList(arr);
-        Collections.shuffle(strlist);
+        Collections.reverse(strlist);
         return strlist.toArray(new String[strlist.size()]);
     }
 
@@ -92,9 +96,16 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        int[] posNum = new int[]{};
+        int[] posNum;
+        int pos_length = 0;
         for (int i = 0;i<arr.length;i++){
-            if(arr[i] < 0){
+            if(arr[i] > 0){
+                pos_length++;
+            }
+        }
+        posNum = new int[pos_length];
+        for (int i = 0;i<arr.length;i++){
+            if(arr[i] > 0){
                 posNum[i] = arr[i];
             }
         }
